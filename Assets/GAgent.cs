@@ -36,8 +36,8 @@ public class GAgent : MonoBehaviour
         {
             actions.Add(a);
         }
-
     }
+
 
 
     bool invoked = false;
@@ -54,11 +54,13 @@ public class GAgent : MonoBehaviour
 
         if(currentAction != null && currentAction.running)
         {
-            if(currentAction.agent.hasPath && currentAction.agent.remainingDistance < 1f)
+            float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
+            if(currentAction.agent.hasPath && currentAction.agent.remainingDistance < 2f)
             {
+                Debug.Log("Distance to Goal: " + currentAction.agent.remainingDistance);
                 if(!invoked)
                 {
-                    invoke("CompleteAction", currentAction.duration);
+                    Invoke("CompleteAction", currentAction.duration);
                     invoked = true;
                 }
 
@@ -98,7 +100,7 @@ public class GAgent : MonoBehaviour
             currentAction = actionQueue.Dequeue();
             if(currentAction.PrePerform())
             {
-                if(currentAction.target = null && currentAction.targetTag != "")
+                if(currentAction.target == null && currentAction.targetTag != "")
                     currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
 
                 if(currentAction.target != null)

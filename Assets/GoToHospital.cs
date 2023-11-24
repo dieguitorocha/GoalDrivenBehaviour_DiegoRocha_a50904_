@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GoToHospitalehaviourScript : GAction
 {
+
     public override bool PrePerform()
     {
         return true;
     }
 
-    public overridebool PostPerform()
+    public override bool PostPerform()
     {
         return true;
     }
