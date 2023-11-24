@@ -5,22 +5,27 @@ using UnityEngine;
 public sealed class GWorld
 {
     private static readonly GWorld instance = new GWorld();
-    private static WorldStates world;
+    private WorldStates world;  // Remove 'static' to make it an instance variable
+
+    // Correct the property name and provide a backing field
+    public static GWorld Instance
+    {
+        get { return instance; }
+    }
 
     static GWorld()
     {
-        world = new WorldStates();
+        instance.world = new WorldStates();  // Access 'world' through the 'instance'
     }
+
     private GWorld()
     {
 
     }
-    public static GWorldInstance
-        {
-        get { return instance; }
-        }
+
     public WorldStates GetWorld()
     {
-     return world;
+        return world;
     }
 }
+

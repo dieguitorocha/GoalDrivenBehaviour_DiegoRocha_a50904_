@@ -11,7 +11,7 @@ public class WorldState
 
 }
 
-public class WorldStates 
+public class WorldStates
 {
     public Dictionary<string, int> states;
 
@@ -49,19 +49,20 @@ public class WorldStates
             states.Remove(key);
     }
 
-    public vois SetState(string key, int value)
+    public void SetState(string key, int value)
     {
-        if(states.ContainsKey(key))
+        if (states.ContainsKey(key))
         {
             states[key] = value;
         }
         else
-            {
-            states.Add(key, value);
-            }
-        public Dictionary<string, int> GetStates()
         {
-            return states;
+            states.Add(key, value);
         }
 
+    }
+    public Dictionary<string, int> GetStates()
+    {
+        return states;
+    }
 }

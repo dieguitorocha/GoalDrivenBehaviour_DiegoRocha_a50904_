@@ -13,7 +13,7 @@ public class Node
     public Node(Node parent, float cost, Dictionary<string, int> allstates, GAction action)
     {
         this.parent = parent;
-        this,cost = cost;
+        this.cost = cost;
         this.state = new Dictionary<string, int>(allstates);
         this.action = action;
 
@@ -98,7 +98,7 @@ public class GPlanner
                 if (GoalAchieved(goal, currentState))
                 {
                     leaves.Add(node);
-                    foundPath = true
+                    foundPath = true;
                 }
                 else
                 {
@@ -106,11 +106,12 @@ public class GPlanner
                     bool found = BuildGraph(node, leaves, subset, goal);
                     if (found)
                         foundPath = true;
-                ]
-            }
+                
+                }
             }
             return foundPath;
         }
+    }
 
         private bool GoalAchieved(Dictionary<string, int> goal, Dictionary<string, int> state)
         {
@@ -119,7 +120,7 @@ public class GPlanner
                 if (!state.ContainsKey(g.Key))
                     return false;
             }
-            return true
+        return true;
         }
 
         private List<GAction> ActionSubset(List<GAction> actions, GAction removeMe)
@@ -132,4 +133,5 @@ public class GPlanner
             }
             return subset;
         }
+    
 }
